@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router/router';
 import { SearchPageComponent } from './component/search-page/search-page.component';
 
 const routes: Routes = [{path:'search-page',component:SearchPageComponent}];
