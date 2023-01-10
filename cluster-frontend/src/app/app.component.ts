@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SearchPageComponent } from './component/search-page/search-page.component';
 
 @Component({
