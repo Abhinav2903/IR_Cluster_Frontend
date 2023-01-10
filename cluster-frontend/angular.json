@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "cluster-frontend"
+  "defaultProject": "cluster-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
