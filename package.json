@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@carrotsearch/foamtree": "^3.5.0"
+  }
+}

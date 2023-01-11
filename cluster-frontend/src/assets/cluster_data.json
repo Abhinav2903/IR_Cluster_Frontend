@@ -1,0 +1,20 @@
+[{
+    "name":"Cluster 1",
+    "data":[{"name": "Germany", "value": 445 },{"name": "RUSSIA", "value": 894 },{"name": "France", "value": 245 }]
+},
+{
+    "name":"Cluster 2",
+    "data":[{"name": "India", "value": 345 },{"name": "Germany", "value": 445 }]
+},
+{
+    "name":"Cluster 3",
+    "data":[{"name": "USA", "value": 985 }]
+},
+{
+    "name":"Cluster 4",
+    "data":[{"name": "UK", "value": 245 }]
+},
+{
+    "name":"Cluster 5",
+    "data":[{"name": "China", "value": 660 }]
+}]
