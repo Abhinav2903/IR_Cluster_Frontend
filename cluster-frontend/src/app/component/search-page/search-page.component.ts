@@ -1,26 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent implements OnInit {
-
-  icon = document.querySelector(".icon"); 
-  search = document.querySelector(".search");
+  query: string = '';
   constructor() {}
 
   ngOnInit(): void {
-    console.log("search page")
+    this.page_render();
   }
 
-  public page_render(){
-   
-// this.icon.onclick = function () {
-// this.	search.classList.toggle("active");
-// };
+  public page_render() {
+    console.log('page render');
+    const el = document.getElementById('input_query') as HTMLInputElement;
+
+    el?.addEventListener('keypress', (event) => {
+      console.log('EL' + el.value);
+      if (event.code === 'Enter') {
+        this.cluster_search(JSON.stringify(el.value));
+      }
+    });
+
   }
 
+  public cluster_search(query: any) {
+    console.log('cluster search call query' + query);
+  }
 }
