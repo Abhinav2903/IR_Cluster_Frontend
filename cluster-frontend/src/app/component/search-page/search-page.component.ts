@@ -22,6 +22,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   public page_render() {
+    this.clusterService.reindex_data()
     console.log('page render');
     const el = document.getElementById('input_query') as HTMLInputElement;
 
@@ -60,7 +61,12 @@ export class SearchPageComponent implements OnInit {
   public clean_cluster_data(cluster_response:any){
     console.log(cluster_response.length)
   }
+  
+  public reindex_cluster_data(){
+    this.clusterService.reindex_data();
+  }
 
+  
   public highchart_function(query: any) {
     // this.bubblechart = {
 
@@ -71,11 +77,11 @@ export class SearchPageComponent implements OnInit {
                 events: {
                   
                   click: (event: any) => {
-                    alert()
+                    
                     // const hl = document.getElementById('hgchart') as HTMLAnchorElement;
-                    console.log(this.bubblechart.series)
-                    console.log("ffff",event)
-                    this.clickchart(event, query);
+                    // console.log(this.bubblechart.series)
+                    // console.log("ffff",event)
+                    // this.clickchart(event, query);
 
                   },
                 },
@@ -87,7 +93,7 @@ export class SearchPageComponent implements OnInit {
               gravitationalConstant: 0.05,
               splitSeries: true,
               seriesInteraction: false,
-              dragBetweenSeries: true,
+              dragBetweenSeries: false,
               parentNodeLimit: true
             },
             dataLabels: {
@@ -96,7 +102,7 @@ export class SearchPageComponent implements OnInit {
               filter: {
                 property: 'y',
                 operator: '>',
-                value: 10
+                value: 1
               },
               style: {
                 color: 'black',

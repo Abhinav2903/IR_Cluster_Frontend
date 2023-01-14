@@ -13,7 +13,7 @@
 .cluster-box{
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 20%;
     // background: #353535;
     padding: 10px;
     border-radius: 0px;
@@ -24,6 +24,18 @@
     position: absolute;
     top: 20%;
     left: 50%;
+    transform: translate(-50%,-50%);
+    height: 60px;
+    background: #353535;
+    line-height:40px;
+    padding: 10px;
+    border-radius: 60px;
+}
+
+.reindex-box{
+    position: absolute;
+    top: 50%;
+    left: 180%;
     transform: translate(-50%,-50%);
     height: 60px;
     background: #353535;
