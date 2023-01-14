@@ -10,6 +10,7 @@ export class ClusterService {
   url="../../assets/cluster_data.json";
   myBehaviorSubject = new BehaviorSubject("");
   data:any;
+  reindexdata:any;
   constructor(private http:HttpClient) { }
 
   public cluster_data(){
@@ -17,5 +18,15 @@ export class ClusterService {
     this.data= query_data;
     this.myBehaviorSubject.next(this.data)
     });
+  }
+
+  public reindex_data(){
+
+    console.log("success")
+
+    //this.http.get(this.url).subscribe((reindex_data)=>{
+      //
+      //
+    // })
   }
 }

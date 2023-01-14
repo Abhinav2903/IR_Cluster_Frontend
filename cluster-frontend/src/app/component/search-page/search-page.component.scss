@@ -13,7 +13,7 @@
 .cluster-box{
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 20%;
     // background: #353535;
     padding: 10px;
     border-radius: 0px;
@@ -31,6 +31,26 @@
     padding: 10px;
     border-radius: 60px;
 }
+
+.reindex-box{
+    
+        position: absolute;
+        top: 16%;
+        left: 67%;
+        /* transform: translate(-50%, -50%); */
+        height: 50px;
+        background: #353535;
+        /* line-height: 40px; */
+        padding: 10px;
+        border-radius: 60px;
+    
+}
+
+
+.render-box-image{
+    height: 30px;
+}
+
 .search-input{
     background: #353535;
     color: #fff;
