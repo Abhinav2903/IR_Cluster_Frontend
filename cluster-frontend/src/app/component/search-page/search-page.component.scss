@@ -33,16 +33,24 @@
 }
 
 .reindex-box{
-    position: absolute;
-    top: 50%;
-    left: 180%;
-    transform: translate(-50%,-50%);
-    height: 60px;
-    background: #353535;
-    line-height:40px;
-    padding: 10px;
-    border-radius: 60px;
+    
+        position: absolute;
+        top: 16%;
+        left: 67%;
+        /* transform: translate(-50%, -50%); */
+        height: 50px;
+        background: #353535;
+        /* line-height: 40px; */
+        padding: 10px;
+        border-radius: 60px;
+    
 }
+
+
+.render-box-image{
+    height: 30px;
+}
+
 .search-input{
     background: #353535;
     color: #fff;
