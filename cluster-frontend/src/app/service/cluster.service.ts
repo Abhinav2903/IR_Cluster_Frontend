@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ClusterService {
 
   url="http://localhost:8080/search";
-  reindex_url="../../assets/reindex.json";
+  reindex_url="http://localhost:8080/indexing";
   myBehaviorSubject = new BehaviorSubject("");
   myreindexBehaviourSubject = new BehaviorSubject("")
   data:any;
