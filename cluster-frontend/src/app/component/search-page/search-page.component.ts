@@ -24,11 +24,11 @@ export class SearchPageComponent implements OnInit {
 
   public page_render() {
     this.clusterService.reindex_data()
-    console.log('page render');
+    //console.log('page render');
     const el = document.getElementById('input_query') as HTMLInputElement;
 
     el?.addEventListener('keypress', (event) => {
-      console.log('EL' + el.value);
+      //console.log('EL' + el.value);
       if (event.code === 'Enter') {
 
         this.cluster_search(JSON.stringify(el.value));
@@ -37,18 +37,18 @@ export class SearchPageComponent implements OnInit {
   }
 
   public cluster_search(query: any) {
-    console.log('cluster search call query' + query);
+    //console.log('cluster search call query' + query);
     this.fetch_cluster_data(query);
     
   }
 
   public fetch_cluster_data(query:any) {
     //service call cluster service and fetch json object
-    console.log('fetch cluster data call');
+    //console.log('fetch cluster data call');
     this.clusterService.cluster_data();
     this.clusterService.myBehaviorSubject.subscribe(
       (data) => {
-        console.log('JSON DATA',data);
+        //console.log('JSON DATA',data);
         if(data){
           this.clean_cluster_data(data)
           this.clusterData = data;
@@ -60,15 +60,15 @@ export class SearchPageComponent implements OnInit {
   }
 
   public clean_cluster_data(cluster_response:any){
-    console.log(cluster_response.length)
+    //console.log(cluster_response.length)
   }
   
   public reindex_cluster_data(){
     const value = this.clusterService.reindex_data();
     this.clusterService.myreindexBehaviourSubject.subscribe((rdata)=>{
-      console.log("TRue value is ",rdata);
+      //console.log("TRue value is ",rdata);
       this.reindexData = rdata;
-      console.log(this.reindexData.success)
+      //console.log(this.reindexData.success)
         if(this.reindexData.success){
 
         }
@@ -78,7 +78,6 @@ export class SearchPageComponent implements OnInit {
 
   
   public highchart_function(query: any) {
-    // this.bubblechart = {
 
       this.bubblechart=Highcharts.chart('container',{
         plotOptions: {
@@ -89,8 +88,8 @@ export class SearchPageComponent implements OnInit {
                   click: (event: any) => {
                     
                     // const hl = document.getElementById('hgchart') as HTMLAnchorElement;
-                    // console.log(this.bubblechart.series)
-                    // console.log("ffff",event)
+                    // //console.log(this.bubblechart.series)
+                    // //console.log("ffff",event)
                     // this.clickchart(event, query);
 
                   },
@@ -140,29 +139,11 @@ export class SearchPageComponent implements OnInit {
     }
     )
       
-    // };
   }
 
   public clickchart(event: any, query: any) {
     alert(' clicked\n' + event);
     window.open('https://en.wikipedia.org/wiki/' + query);
-    console.log('Chart Event' + event);
+    //console.log('Chart Event' + event);
   }
 }
-
-
-// plotOptions: {
-//   series: {
-//     cursor: 'pointer',
-//     events: {
-      
-//       click: (event: any) => {
-//         alert()
-//         // const hl = document.getElementById('hgchart') as HTMLAnchorElement;
-//         console.log("ffff",event.target)
-//         console.log(this.bubblechart.series.name)
-//         this.clickchart(event, query);
-//       },
-//     },
-//   },
-// },
