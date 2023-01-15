@@ -16,6 +16,7 @@ export class SearchPageComponent implements OnInit {
   constructor(private clusterService: ClusterService) {}
   Highcharts = Highcharts;
   clusterData:any;
+  reindexData:any;
 
   ngOnInit(): void {
     this.page_render();
@@ -63,7 +64,16 @@ export class SearchPageComponent implements OnInit {
   }
   
   public reindex_cluster_data(){
-    this.clusterService.reindex_data();
+    const value = this.clusterService.reindex_data();
+    this.clusterService.myreindexBehaviourSubject.subscribe((rdata)=>{
+      console.log("TRue value is ",rdata);
+      this.reindexData = rdata;
+      console.log(this.reindexData.success)
+        if(this.reindexData.success){
+
+        }
+    })
+     
   }
 
   
@@ -113,6 +123,10 @@ export class SearchPageComponent implements OnInit {
           }
         },
 
+        tooltip: {
+          useHTML: true,
+          pointFormat: '<b>{point.name}:</b> {point.value}'
+      },
 
       series: 
       this.clusterData,

@@ -8,7 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 export class ClusterService {
 
   url="../../assets/cluster_data.json";
+  reindex_url="../../assets/reindex.json";
   myBehaviorSubject = new BehaviorSubject("");
+  myreindexBehaviourSubject = new BehaviorSubject("")
   data:any;
   reindexdata:any;
   constructor(private http:HttpClient) { }
@@ -21,12 +23,10 @@ export class ClusterService {
   }
 
   public reindex_data(){
-
-    console.log("success")
-
-    //this.http.get(this.url).subscribe((reindex_data)=>{
-      //
-      //
-    // })
+    this.http.get(this.reindex_url).subscribe((data)=>{
+      this.reindexdata = data;
+      // console.log(this.reindexdata.success)
+      this.myreindexBehaviourSubject.next(this.reindexdata)
+    })
   }
 }
