@@ -13,7 +13,7 @@ HighchartsMore(Highcharts);
 export class SearchPageComponent implements OnInit {
   query: string = '';
   bubblechart: any;
-  constructor(private clusterService: ClusterService) {}
+  constructor(private clusterService?: ClusterService) {}
   Highcharts = Highcharts;
   clusterData:any;
   reindexData:any;
@@ -23,34 +23,32 @@ export class SearchPageComponent implements OnInit {
   }
 
   public page_render() {
-    this.clusterService.reindex_data()
-    //console.log('page render');
+    this.clusterService?.reindex_data()
+    console.log('page render');
     const el = document.getElementById('input_query') as HTMLInputElement;
 
     el?.addEventListener('keypress', (event) => {
-      //console.log('EL' + el.value);
       if (event.code === 'Enter') {
-
         this.cluster_search(JSON.stringify(el.value));
       }
     });
   }
 
   public cluster_search(query: any) {
-    //console.log('cluster search call query' + query);
+    console.log('cluster search call query' + query);
     this.fetch_cluster_data(query);
     
   }
 
   public fetch_cluster_data(query:any) {
     //service call cluster service and fetch json object
-    //console.log('fetch cluster data call');
-    this.clusterService.cluster_data();
-    this.clusterService.myBehaviorSubject.subscribe(
+    console.log('fetch cluster data call');
+    this.clusterService?.cluster_data();
+    this.clusterService?.myBehaviorSubject.subscribe(
       (data) => {
-        //console.log('JSON DATA',data);
+        console.log('JSON DATA',data);
         if(data){
-          this.clean_cluster_data(data)
+          // this.clean_cluster_data(data)
           this.clusterData = data;
           this.highchart_function(query);
         }
@@ -64,13 +62,11 @@ export class SearchPageComponent implements OnInit {
   }
   
   public reindex_cluster_data(){
-    const value = this.clusterService.reindex_data();
-    this.clusterService.myreindexBehaviourSubject.subscribe((rdata)=>{
-      //console.log("TRue value is ",rdata);
+    const value = this.clusterService?.reindex_data();
+    this.clusterService?.myreindexBehaviourSubject.subscribe((rdata)=>{
       this.reindexData = rdata;
-      //console.log(this.reindexData.success)
         if(this.reindexData.success){
-
+          console.log("reindex call",this.reindexData.success)
         }
     })
      
@@ -82,18 +78,20 @@ export class SearchPageComponent implements OnInit {
       this.bubblechart=Highcharts.chart('container',{
         plotOptions: {
           series: {
+            
+            allowPointSelect:true,
                 cursor: 'pointer',
-                events: {
-                  
-                  click: (event: any) => {
-                    
-                    // const hl = document.getElementById('hgchart') as HTMLAnchorElement;
-                    // //console.log(this.bubblechart.series)
-                    // //console.log("ffff",event)
-                    // this.clickchart(event, query);
-
-                  },
-                },
+                point: {
+                  events: {
+                      select: function (event) {
+                          var text = this.name + ': ' + this.y + ' was last selected'
+                          console.log(text);
+                          const cls = new SearchPageComponent();
+                          cls.clickchart(event,this.name)
+                          
+                      }
+                  }
+              }
               },
           packedbubble: {
             minSize: '20%',
@@ -124,7 +122,8 @@ export class SearchPageComponent implements OnInit {
 
         tooltip: {
           useHTML: true,
-          pointFormat: '<b>{point.name}:</b> {point.value}'
+          pointFormat: '<b>{point.name}:</b> {point.value}',
+          
       },
 
       series: 
@@ -142,8 +141,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   public clickchart(event: any, query: any) {
-    alert(' clicked\n' + event);
+    // alert(' clicked\n' + event);
     window.open('https://en.wikipedia.org/wiki/' + query);
-    //console.log('Chart Event' + event);
   }
 }
