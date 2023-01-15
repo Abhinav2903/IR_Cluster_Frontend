@@ -63,8 +63,10 @@ export class SearchPageComponent implements OnInit {
   
   public reindex_cluster_data(){
     const value = this.clusterService?.reindex_data();
+    
     this.clusterService?.myreindexBehaviourSubject.subscribe((rdata)=>{
       this.reindexData = rdata;
+
         if(this.reindexData.success){
           console.log("reindex call",this.reindexData.success)
         }
