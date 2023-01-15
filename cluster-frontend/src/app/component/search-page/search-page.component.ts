@@ -43,7 +43,7 @@ export class SearchPageComponent implements OnInit {
   public fetch_cluster_data(query:any) {
     //service call cluster service and fetch json object
     console.log('fetch cluster data call');
-    this.clusterService?.cluster_data();
+    this.clusterService?.cluster_data(query);
     this.clusterService?.myBehaviorSubject.subscribe(
       (data) => {
         console.log('JSON DATA',data);
