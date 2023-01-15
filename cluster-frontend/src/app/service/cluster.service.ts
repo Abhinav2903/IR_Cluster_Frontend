@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -15,8 +15,12 @@ export class ClusterService {
   reindexdata:any;
   constructor(private http:HttpClient) { }
 
-  public cluster_data(){
-    this.http.get(this.url).subscribe((query_data)=>{
+  public cluster_data(query:any){
+    let queryParams = new HttpParams();
+    // queryParams = queryParams.append("x",5);
+    queryParams= queryParams.append("q",query.replace(/^"(.+(?="$))"$/, '$1'));
+    
+    this.http.get(this.url,{params:queryParams}).subscribe((query_data)=>{
     this.data= query_data;
     this.myBehaviorSubject.next(this.data)
     });
