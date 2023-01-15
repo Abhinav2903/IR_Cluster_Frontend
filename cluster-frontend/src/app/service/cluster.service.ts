@@ -9,6 +9,10 @@ export class ClusterService {
 
   url="http://localhost:8080/search";
   reindex_url="http://localhost:8080/indexing";
+
+  // url="../../assets/cluster_data.json";
+  // reindex_url="../../assets/reindex.json";
+
   myBehaviorSubject = new BehaviorSubject("");
   myreindexBehaviourSubject = new BehaviorSubject("")
   data:any;
@@ -29,6 +33,7 @@ export class ClusterService {
   public reindex_data(){
     this.http.get(this.reindex_url).subscribe((data)=>{
       this.reindexdata = data;
+      alert("reindexing  Done")
       // console.log(this.reindexdata.success)
       this.myreindexBehaviourSubject.next(this.reindexdata)
     })
